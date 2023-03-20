@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Alpine.js Sortable</title>
+    </head>
+    <body>
+        <script type="module" src="./main.ts"></script>
+
+        <main class="container">
+            <h1 class="text-4xl text-center font-bold text-gray-800 mt-8 mb-4">
+                Alpine.js Sortable
+            </h1>
+
+            <div x-data="{ items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'] }">
+                <div class="grid grid-cols-2 gap-3">
+                    <template x-for="(item, index) in items" :key="item">
+                        <div
+                            x-text="item"
+                            class="bg-purple-300 p-2 rounded-md cursor-pointer"
+                            x-sortable:items="index"
+                        ></div>
+                    </template>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
