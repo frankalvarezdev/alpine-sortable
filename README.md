@@ -11,7 +11,7 @@ Simple sortable list with Alpine.js
 
 ```html
 <!-- Alpine Plugins -->
-<script defer src="https://cdn.jsdelivr.net/npm/alpine-sortable@0.1.0/dist/alpine-sortable.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpine-sortable@0.1.x/dist/alpine-sortable.min.js"></script>
 <!-- Alpine Core -->
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 ```
@@ -19,7 +19,7 @@ Simple sortable list with Alpine.js
 **ES6 Module on the browser**
 
 ```javascript
-import Sortable from 'https://cdn.jsdelivr.net/npm/alpine-sortable@0.1.0/dist/alpine-sortable.esm.js'
+import Sortable from 'https://cdn.jsdelivr.net/npm/alpine-sortable@0.1.x/dist/alpine-sortable.esm.js'
 import Alpine from 'https://esm.sh/alpinejs'
 Alpine.plugin(Sortable)
 Alpine.start()
