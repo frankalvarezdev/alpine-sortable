@@ -16,7 +16,9 @@ const sortable = (Alpine: Alpine) => {
         (element, { expression, value }, { evaluate, evaluateLater, effect, cleanup }) => {
             const el = element as HTMLElement
 
-            const items = evaluate(value) as any[]
+            let items = evaluate(value) as any[]
+            const getNewItems = evaluateLater(value)
+
             // swaps the elements in the array of items
             const swapElements = (index1: number, index2: number) => {
                 const temp = items[index1]
@@ -25,7 +27,7 @@ const sortable = (Alpine: Alpine) => {
             }
 
             let index = evaluate(expression) as number
-            let getNewIndex = evaluateLater(expression)
+            const getNewIndex = evaluateLater(expression)
             el.setAttribute('draggable', 'true')
             // inserts the index as an attribute of the element, for use on mobile devices, in the 'touchend' event
             const setIndex = (index: number) => {
@@ -130,12 +132,17 @@ const sortable = (Alpine: Alpine) => {
             el.addEventListener('touchmove', onTouchMove)
             el.addEventListener('touchend', onTouchEnd)
 
-            // listen for changes in the index, to update
             // @ts-ignore
             effect(() => {
+                // listen for changes in the index, to update
                 getNewIndex((newIndex: number) => {
                     index = newIndex
                     setIndex(index)
+                })
+
+                // listen for changes in the items, to update
+                getNewItems((newItems: any[]) => {
+                    items = newItems
                 })
             })
 
