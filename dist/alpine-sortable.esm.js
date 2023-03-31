@@ -9,14 +9,15 @@ var sortable = (Alpine) => {
     "sortable",
     (element, { expression, value }, { evaluate, evaluateLater, effect, cleanup }) => {
       const el = element;
-      const items = evaluate(value);
+      let items = evaluate(value);
+      const getNewItems = evaluateLater(value);
       const swapElements = (index1, index2) => {
         const temp = items[index1];
         items[index1] = items[index2];
         items[index2] = temp;
       };
       let index = evaluate(expression);
-      let getNewIndex = evaluateLater(expression);
+      const getNewIndex = evaluateLater(expression);
       el.setAttribute("draggable", "true");
       const setIndex = (index2) => {
         el.setAttribute("data-draggable-index", String(index2));
@@ -111,6 +112,9 @@ var sortable = (Alpine) => {
         getNewIndex((newIndex) => {
           index = newIndex;
           setIndex(index);
+        });
+        getNewItems((newItems) => {
+          items = newItems;
         });
       });
       cleanup(() => {

@@ -1,7 +1,7 @@
 {
     "name": "alpine-sortable",
     "description": "Sortable list with Alpine.js",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "type": "module",
     "main": "alpine-sortable.cjs.js",
     "module": "dist/alpine-sortable.esm.js",
